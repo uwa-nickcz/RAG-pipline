@@ -158,3 +158,37 @@ class ContractChunker:
                         metadata=metadata
                     ))
         return chunks
+
+def split_sql_statements(sql_text):
+    """
+    将包含多个SQL建表语句的字符串分割成单独的建表语句列表
+    每个建表语句包括前面的注释和CREATE TABLE语句
+    """
+    statements = []
+    current_statement = []
+    collecting = False
+
+    for line in sql_text.splitlines():
+        stripped_line = line.strip()
+
+        # 检测注释行（新语句的开始）
+        if stripped_line.startswith('--'):
+            # 如果已经收集到语句，保存前一个语句
+            if current_statement:
+                statements.append('\n'.join(current_statement))
+                current_statement = []
+            collecting = True
+
+        # 收集语句行（包括空行）
+        if collecting or stripped_line:
+            current_statement.append(line)
+
+        # 检测语句结束（分号结尾）
+        if stripped_line.endswith(';'):
+            collecting = False
+
+    # 添加最后一个语句
+    if current_statement:
+        statements.append('\n'.join(current_statement))
+
+    return statements
