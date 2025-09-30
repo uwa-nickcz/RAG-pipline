@@ -1,0 +1,46 @@
+[2025-09-29 14:05:27,054] [rag_pipeline] [INFO] [__init__.py:136] 日志系统初始化成功
+[2025-09-29 14:09:16,163] [rag_pipeline] [INFO] [__init__.py:136] 日志系统初始化成功
+[2025-09-29 14:10:44,498] [rag_pipeline] [INFO] [__init__.py:136] 日志系统初始化成功
+[2025-09-29 14:22:52,351] [rag_pipeline] [INFO] [__init__.py:136] 日志系统初始化成功
+[2025-09-29 14:25:36,717] [rag_pipeline] [INFO] [agent_service.py:154] 开始流式执行智能体任务，类型: metahuman
+[2025-09-29 14:25:41,558] [rag_pipeline] [INFO] [streaming_service.py:158] 工具开始执行: sqlsearch
+[2025-09-29 14:25:47,435] [rag_pipeline] [INFO] [streaming_service.py:162] 工具执行完成，输出长度: 2076
+[2025-09-29 14:25:52,068] [rag_pipeline] [INFO] [streaming_service.py:96] 执行统计: {'tokens_generated': 473, 'tools_executed': 1, 'total_execution_time': 5.889999999999418, 'errors_count': 0}
+[2025-09-29 14:26:57,104] [rag_pipeline] [INFO] [agent_service.py:154] 开始流式执行智能体任务，类型: metahuman
+[2025-09-29 14:27:01,222] [rag_pipeline] [INFO] [streaming_service.py:158] 工具开始执行: sqlsearch
+[2025-09-29 14:27:07,842] [rag_pipeline] [INFO] [streaming_service.py:162] 工具执行完成，输出长度: 2076
+[2025-09-29 14:27:12,901] [rag_pipeline] [INFO] [streaming_service.py:96] 执行统计: {'tokens_generated': 444, 'tools_executed': 1, 'total_execution_time': 6.593000000008033, 'errors_count': 0}
+[2025-09-29 14:29:37,637] [rag_pipeline] [INFO] [agent_service.py:154] 开始流式执行智能体任务，类型: metahuman
+[2025-09-29 14:30:08,540] [rag_pipeline] [INFO] [streaming_service.py:158] 工具开始执行: sqlsearch
+[2025-09-29 14:30:16,765] [rag_pipeline] [INFO] [streaming_service.py:162] 工具执行完成，输出长度: 2076
+[2025-09-29 14:30:23,286] [rag_pipeline] [INFO] [streaming_service.py:96] 执行统计: {'tokens_generated': 580, 'tools_executed': 1, 'total_execution_time': 8.203999999997905, 'errors_count': 0}
+[2025-09-29 14:32:44,278] [rag_pipeline] [INFO] [__init__.py:136] 日志系统初始化成功
+[2025-09-29 14:39:09,903] [rag_pipeline] [INFO] [__init__.py:136] 日志系统初始化成功
+[2025-09-29 14:40:12,628] [rag_pipeline] [INFO] [__init__.py:136] 日志系统初始化成功
+[2025-09-29 14:42:56,352] [rag_pipeline] [INFO] [agent_service.py:154] 开始流式执行智能体任务，类型: metahuman
+[2025-09-29 14:43:02,196] [rag_pipeline] [INFO] [streaming_service.py:158] 工具开始执行: databasesearch
+[2025-09-29 14:43:03,795] [rag_pipeline] [INFO] [streaming_service.py:162] 工具执行完成，输出长度: 5363
+[2025-09-29 14:43:15,962] [rag_pipeline] [INFO] [streaming_service.py:96] 执行统计: {'tokens_generated': 926, 'tools_executed': 1, 'total_execution_time': 1.6720000000059372, 'errors_count': 0}
+[2025-09-29 14:45:19,669] [rag_pipeline] [INFO] [agent_service.py:154] 开始流式执行智能体任务，类型: metahuman
+[2025-09-29 14:45:25,389] [rag_pipeline] [INFO] [streaming_service.py:158] 工具开始执行: databasesearch
+[2025-09-29 14:45:26,696] [rag_pipeline] [INFO] [streaming_service.py:162] 工具执行完成，输出长度: 5363
+[2025-09-29 14:45:36,983] [rag_pipeline] [INFO] [streaming_service.py:96] 执行统计: {'tokens_generated': 799, 'tools_executed': 1, 'total_execution_time': 1.312000000005355, 'errors_count': 0}
+[2025-09-29 14:47:45,596] [rag_pipeline] [INFO] [__init__.py:136] 日志系统初始化成功
+[2025-09-29 14:47:51,259] [rag_pipeline] [INFO] [agent_service.py:154] 开始流式执行智能体任务，类型: metahuman
+[2025-09-29 14:47:56,143] [rag_pipeline] [INFO] [streaming_service.py:158] 工具开始执行: databasesearch
+[2025-09-29 14:47:57,560] [rag_pipeline] [INFO] [streaming_service.py:162] 工具执行完成，输出长度: 5363
+[2025-09-29 14:48:05,845] [rag_pipeline] [INFO] [streaming_service.py:96] 执行统计: {'tokens_generated': 676, 'tools_executed': 1, 'total_execution_time': 1.3910000000032596, 'errors_count': 0}
+[2025-09-29 14:49:36,561] [rag_pipeline] [INFO] [agent_service.py:154] 开始流式执行智能体任务，类型: metahuman
+[2025-09-29 14:51:18,155] [rag_pipeline] [INFO] [streaming_service.py:158] 工具开始执行: databasesearch
+[2025-09-29 14:51:19,674] [rag_pipeline] [INFO] [streaming_service.py:162] 工具执行完成，输出长度: 5363
+[2025-09-29 14:51:31,556] [rag_pipeline] [INFO] [streaming_service.py:96] 执行统计: {'tokens_generated': 955, 'tools_executed': 1, 'total_execution_time': 19.906999999991967, 'errors_count': 0}
+[2025-09-29 15:07:41,454] [rag_pipeline] [INFO] [__init__.py:136] 日志系统初始化成功
+[2025-09-29 15:07:57,083] [rag_pipeline] [INFO] [agent_service.py:154] 开始流式执行智能体任务，类型: metahuman
+[2025-09-29 15:08:12,622] [rag_pipeline] [INFO] [streaming_service.py:158] 工具开始执行: databasesearch
+[2025-09-29 15:08:17,769] [rag_pipeline] [INFO] [streaming_service.py:162] 工具执行完成，输出长度: 5363
+[2025-09-29 15:08:27,121] [rag_pipeline] [INFO] [streaming_service.py:96] 执行统计: {'tokens_generated': 740, 'tools_executed': 1, 'total_execution_time': 5.125, 'errors_count': 0}
+[2025-09-29 15:09:34,367] [rag_pipeline] [INFO] [__init__.py:136] 日志系统初始化成功
+[2025-09-29 15:10:00,243] [rag_pipeline] [INFO] [agent_service.py:154] 开始流式执行智能体任务，类型: metahuman
+[2025-09-29 15:10:06,103] [rag_pipeline] [INFO] [streaming_service.py:158] 工具开始执行: databasesearch
+[2025-09-29 15:10:07,402] [rag_pipeline] [INFO] [streaming_service.py:162] 工具执行完成，输出长度: 5363
+[2025-09-29 15:10:17,202] [rag_pipeline] [INFO] [streaming_service.py:96] 执行统计: {'tokens_generated': 811, 'tools_executed': 1, 'total_execution_time': 1.3910000000032596, 'errors_count': 0}

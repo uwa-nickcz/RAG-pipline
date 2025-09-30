@@ -6,14 +6,15 @@
 # Define a tool that searches the web for information.
 # For simplicity, we will use a mock function here that returns a static string.
 import requests
-async def web_search(query: str) -> str:
-    # Replace this with an actual web search function
-    # For example, you could use a web search API or a search engine like Google.
-    return "AutoGen is a programming framework for building multi-agent applications."
+from typing import List
+from langchain_core.tools import tool
+
+
 
 
 # SearxNG搜索函数
-def web_search(query:str, top_k:int = 5):
+@tool
+def web_search(query:str, top_k:int = 5)->List:
     """Find information on the web"""
     searxng_url = 'http://172.26.1.35:9311/search'  # 替换为你的SearxNG实例URL
     params = {

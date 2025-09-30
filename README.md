@@ -1,42 +1,69 @@
-# Contract Analyzer
+# RAG Pipeline 系统
 
-基于大语言模型（LLM）的智能合同分析系统，支持合同条款解析、关键信息提取和语义检索功能。
+## 项目概述
+
+RAG Pipeline 是一个基于检索增强生成（Retrieval-Augmented Generation）技术的智能问答系统，主要用于处理合同文档查询、智能体交互和语音识别等功能。系统集成了多种服务，包括文本生成、语音识别、文档检索和数据库查询等。
 
 ## 主要功能
 
-- 合同文档智能解析与结构化处理
-- 基于语义的合同条款相似性检索
-- 集成最新LLM模型的自然语言理解
-- PostgreSQL数据库支持文档存储与管理
-- 可扩展的AI模型集成架构
+- **智能问答**：基于大语言模型的问答系统，支持流式响应
+- **合同文档检索**：从PostgreSQL数据库中检索相关合同文档
+- **语音识别**：支持音频文件转文本
+- **智能体服务**：支持工具调用和多步骤推理
+- **数据库查询**：支持SQL查询和数据可视化
+
+## 系统架构
+
+系统由以下主要组件构成：
+
+- **FastAPI服务**：提供HTTP API接口
+- **LLM模块**：集成大语言模型，支持流式输出
+- **检索模块**：从向量数据库中检索相关文档
+- **合同解析模块**：解析和处理合同文档
+- **日志模块**：提供统一的日志记录功能
 
 ## 快速开始
 
-### 环境要求
+1. 安装依赖：
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-- Python 3.8+
-- PostgreSQL 12+
+2. 启动服务：
+   ```bash
+   python app/main.py
+   ```
 
-### 安装步骤
+3. 访问API文档：
+   ```
+   http://localhost:8888/docs
+   ```
 
-1. 克隆仓库：
-```bash
-git clone https://github.com/yourusername/contract-analyzer.git
-cd contract-analyzer
-```
-2. 安装依赖：
-```bash
-pip install -r requirements.txt
+## API接口
 
-# 或使用conda
-conda create -n contract-env python=3.8
-conda activate contract-env
-```
-3. 配置文件
-config.py
+系统提供以下主要API接口：
 
-### 使用方法
-```bash
-#问答服务启动
-python app/qa.py
-```
+- `/query`：文档问答接口
+- `/get_is_overtime`：检查是否超时接口
+- `/v1/chat/completions`：智能体流式问答接口
+- `/v1/chat/completions/no_steam`：智能体非流式问答接口
+- `/asr`：语音识别接口
+
+## 配置说明
+
+系统配置文件位于`config/config.py`，主要配置项包括：
+
+- 服务器配置（主机、端口）
+- 模型配置（模型名称、API地址）
+- 数据库配置（连接信息）
+- 检索配置（向量维度、相似度阈值）
+
+## 开发指南
+
+开发新功能时，请遵循以下规范：
+
+1. 遵循PEP 8编码规范
+2. 为所有函数和类添加文档字符串
+3. 使用类型注解
+4. 添加适当的错误处理和日志记录
+5. 编写单元测试

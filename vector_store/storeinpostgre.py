@@ -64,7 +64,7 @@ class PostgreSQLVectorDB(VannaBase):
                                                           ,metadatas=metadata)
 
     def get_related_ddl(self, question: str, **kwargs) -> list:
-        results = self.ddl_store.similarity_search(question, **kwargs)
+        results = self.ddl_store.similarity_search(question, k=1,**kwargs)
         answer_list = [result.page_content for result in results]
         return answer_list
 

@@ -22,7 +22,7 @@ def generation(model,api_url,api_key,prompt,**kwargs):
             prompt
         ,
         "temperature": 0.1,
-        "max_tokens": 4096
+        "max_tokens": 20000
     }
 
     # 发送 POST 请求
