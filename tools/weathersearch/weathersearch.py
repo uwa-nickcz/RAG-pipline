@@ -4,17 +4,9 @@
 # @File     : weathersearch.py
 # @contact  ： ***
 import requests
+from langchain_core.tools import tool
 
-
-def weathersearch(city:str):
-    api_key = "你的API_KEY"
-    url = f"https://www.tianqiapi.com/api?version=v1&city={city}"
-    response = requests.get(url)
-    data = response.json()
-
-    if response.status_code == 200:
-        return data
-    else:
-        print("城市未找到或API错误")
-
-
+@tool
+def weathersearch(city: str) -> str:
+    """获取指定城市的天气信息"""
+    return f"{city}的天气是晴朗的，25°C"

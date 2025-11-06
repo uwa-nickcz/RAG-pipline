@@ -42,16 +42,16 @@ class PostgreSQLVectorDB(VannaBase):
         )
 
 
-    def add_ddl(self, ddl: str, **kwargs) -> str:
-        metadata = [{'id': str(uuid.uuid4()) + "-ddl"}]
+    def add_ddl(self, ddl: str, app_id: str,**kwargs) -> str:
+        metadata = [{'id': str(uuid.uuid4()) + "-ddl", 'app_id': app_id}]
         self.pgvectorStore.create_store_form_text([ddl], collection_name=self.collection_name+'-ddl',metadatas=metadata)
         return metadata
-    def add_documentation(self, doc: str, **kwargs) -> str:
-        metadata = [{'id': str(uuid.uuid4()) + "-doc"}]
+    def add_documentation(self, doc: str,app_id: str, **kwargs) -> str:
+        metadata = [{'id': str(uuid.uuid4()) + "-doc", 'app_id': app_id}]
         self.pgvectorStore.create_store_form_text([doc], collection_name=self.collection_name+'-doc',metadatas=metadata)
         return metadata
 
-    def add_question_sql(self, question: str, sql: str, **kwargs) -> str:
+    def add_question_sql(self, question: str, sql: str, app_id: str,**kwargs) -> str:
         question_sql_json = json.dumps(
             {
                 "question": question,
@@ -59,32 +59,37 @@ class PostgreSQLVectorDB(VannaBase):
             },
             ensure_ascii=False,
         )
-        metadata = [{'id':str(uuid.uuid4()) + "-sql"}]
+        metadata = [{'id':str(uuid.uuid4()) + "-sql", 'app_id': app_id}]
         return  self.pgvectorStore.create_store_form_text([question_sql_json],collection_name=self.collection_name+'-question&sql'
                                                           ,metadatas=metadata)
 
     def get_related_ddl(self, question: str, **kwargs) -> list:
-        results = self.ddl_store.similarity_search(question, **kwargs)
+        results = self.ddl_store.similarity_search(question, filter={'app_id': self.app_id}, **kwargs)
         answer_list = [result.page_content for result in results]
         return answer_list
 
     def get_related_documentation(self, question: str, **kwargs) -> list:
-        results = self.doc_store.similarity_search(question, **kwargs)
+        results = self.doc_store.similarity_search(question, filter={'app_id': self.app_id}, **kwargs)
         answer_list = [result.page_content for result in results]
         return answer_list
     def get_similar_question_sql(self, question: str, **kwargs) -> list:
-        results = self.qa_store.similarity_search(question, **kwargs)
+        results = self.qa_store.similarity_search(question, filter={'app_id': self.app_id}, **kwargs)
         answer_list = [result.page_content for result in results]
         return [json.loads(answer) for answer in answer_list]
 
     def get_training_data(self, **kwargs) -> pd.DataFrame:
         return pd.DataFrame([1,2,3])
 
-    def remove_training_data(self,id: str, **kwargs) -> bool:
+    def remove_training_data(self, id: str, **kwargs) -> bool:
         try:
-            self.ddl_store.delete([id],collection_only=True)
-            self.doc_store.delete([id], collection_only=True)
-            self.qa_store.delete([id], collection_only=True)
+            if id.endswith("-ddl"):
+                self.ddl_store.delete(ids=[id], filter={'app_id': self.app_id}, **kwargs)
+            elif id.endswith("-doc"):
+                self.doc_store.delete(ids=[id], filter={'app_id': self.app_id}, **kwargs)
+            elif id.endswith("-sql"):
+                self.qa_store.delete(ids=[id], filter={'app_id': self.app_id}, **kwargs)
+            else:
+                return False
             return True
         except:
             return False

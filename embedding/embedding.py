@@ -19,7 +19,8 @@ class Embedding:
         # 请求数据
         payload = {
             "model": model,  # 指定模型名称
-            "input": input,   # 输入文本
+            "input": input,
+            "text": input, # 输入文本
         }
         # 发送 POST 请求到 Ollama API
         try:
@@ -29,7 +30,17 @@ class Embedding:
             if response.status_code == 200:
                 result = response.json()
                 embedding = result.get("embeddings", [])
-                return embedding
+                if len(embedding) == 0:
+                    payload['text'] = input[0]
+                    response = requests.post(OLLAMA_API_URL, json=payload)
+                    if response.status_code == 200:
+                        result = response.json()
+                        embedding = result.get("embeddings", [])
+                        if len(embedding) == 0:
+                            embedding = [result.get("data", [])]
+                        return embedding
+                    elif response.status_code == 500:
+                        raise RequestException(f"请求失败，状态码：{response.status_code}")
             else:
                 raise RequestException(f"请求失败，状态码：{response.status_code}")
 
